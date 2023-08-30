@@ -2,7 +2,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import index from "@/pages/index/index";
 import login from "@/pages/login/login";
 
 Vue.use(VueRouter)

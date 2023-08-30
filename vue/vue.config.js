@@ -26,7 +26,7 @@ module.exports = {
         // proxy: null
         proxy: {
             '/api': {
-                target: 'https://sunbt.ltd/manager/',//请求地址
+                target: 'http://localhost:8220',//请求地址
                 ws: true,
                 secure: false,
                 changeOrigin: true,

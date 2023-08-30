@@ -40,10 +40,10 @@
 </template>
 
 <script>
-import {login, logLogin} from "@/api/api";
+import {login, post_aop} from "@/api/api";
 
 export default {
-  name: "login",
+  name: "loginPage",
   data() {
     return {
       ruleForm: {
@@ -101,7 +101,7 @@ export default {
           that.logLogin.password = that.ruleForm.password;
           that.logLogin.username = that.ruleForm.username;
           that.logLogin.status = '0';
-          login(that.ruleForm).then(res => {
+          post_aop(that.ruleForm).then(res => {
             //console.log(res.data);
             let message = res.data.message;
             if (res.data.code === 200) {
