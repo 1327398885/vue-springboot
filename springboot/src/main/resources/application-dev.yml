@@ -1,0 +1,14 @@
+server:
+  port: 8220
+spring:
+  servlet:
+    multipart:
+      max-file-size: -1MB
+      max-request-size: -1MB
+  application:
+    # 应用名称
+    name: springboot
+
+knife4j:
+  enable: true
+#  production: true
