@@ -70,10 +70,12 @@ request_post_aop.interceptors.request.use(
 
 //响应了拦截器（在响应之后对数据进行一些处理）
 request_post_aop.interceptors.response.use(res=>{
+    console.log(res)
     let parse = JSON.parse(res.data);
     console.log(parse.data);
     let bkAes = rsa.rsaDecrypt(parse.data.aesKey, window.jsPrivateKey);
     console.log("使用前端私钥获取后端aesKey：" + bkAes);
+    console.log(parse.data.data)
     return aes.decrypt(parse.data.data, bkAes)
 })
 

@@ -23,6 +23,12 @@ const routes = [
         name: 'login',
         component: login,
         meta: {title: "登录页面"}
+    },
+    {
+        path: '/index',
+        name: 'index',
+        component: () => import('@/pages/index/index'),
+        meta: {title: "主页面"}
     }
 ]
 
@@ -55,7 +61,7 @@ router.beforeEach((to, from, next) => {
             return
         }
         if (user != null) {
-            let accessToken = user.data.token;
+            let accessToken = user.token;
             if (accessToken != null) {
                 // 已登录，允许通过
                 next()

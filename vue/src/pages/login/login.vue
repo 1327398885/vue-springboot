@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import {login, post_aop} from "@/api/api";
-
+import {login, post_aop, getPublicKey} from "@/api/api";
+import aes from "@/util/aes";
 export default {
   name: "loginPage",
   data() {
@@ -69,6 +69,9 @@ export default {
       }
     }
   },
+  created() {
+    this.getPublic();
+  },
   watch: {
     rememberMe: 'rememberUsername'
   },
@@ -79,7 +82,17 @@ export default {
 
   },
   methods: {
-
+    /**
+     * 获取后台公钥
+     */
+    getPublic() {
+      //获取后台公钥
+      getPublicKey().then(res => {
+        this.javaPublicKey = res.data;
+        console.log(res);
+        window.sessionStorage.setItem("javaPublicKey", this.javaPublicKey);
+      })
+    },
     //绑定监听事件
     keyDown(e) {
       let that = this;
@@ -102,9 +115,9 @@ export default {
           that.logLogin.username = that.ruleForm.username;
           that.logLogin.status = '0';
           post_aop(that.ruleForm).then(res => {
-            //console.log(res.data);
-            let message = res.data.message;
-            if (res.data.code === 200) {
+            console.log(res.data);
+            let message = res.message;
+            if (res.code === 200) {
               that.loginLoading = false; // 登录的 loading 状态
               //登录成功
               that.$message({
@@ -131,10 +144,7 @@ export default {
             that.loginLoading = false
           }).finally(() => {
             that.loginLoading = false;
-            logLogin(that.logLogin).then(res => {
-              if (res.data.code === 200) {
-              }
-            })
+
           })
 
         } else {

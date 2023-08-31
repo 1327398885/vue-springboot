@@ -17,7 +17,7 @@ export default {
     this.disabled();
   },
   mounted() {
-    this.logInterview();
+
   },
   destroyed() {
 
@@ -34,13 +34,7 @@ export default {
         // document.onkeydown = new Function("event.returnValue=false");
       });
     },
-    logInterview: function () {
-      logInterview().then(res => {
-        let code = res.data.code;
-        if (res.data.code === 200) {
-        }
-      })
-    }
+
   }
 }
 </script>

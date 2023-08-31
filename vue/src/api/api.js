@@ -1,4 +1,4 @@
-import request from "@/network/request";
+import {request} from "@/network/request";
 import {request_post_aop} from "@/network/request_post_aop";
 
 //登录
